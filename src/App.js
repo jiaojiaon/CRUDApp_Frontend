@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Link, Route, Routes,} from "react-router-dom";
+import AddStudent from "./components/AddStudent";
+import AddCampus from "./components/AddCampus";
+import Home from "./components/Home";
+import AllCampusView from "./components/AllCampusView";
+import AllStudentsView from "./components/AllStudentsView";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <Router>
+          <nav>
+              <ul>
+                  <li><Link to="/">Home</Link></li>
+              </ul>
+          </nav>
+        <Routes>
+                <Route path={'/'} >
+
+                    <Route index element={<Home />} />
+
+                    <Route path={'campuses'} >
+                        <Route index element={<AllCampusView />} />
+                        <Route path={'addCampus'} element={<AddCampus />} />
+                    </Route>
+
+                    <Route path={'students'} >
+                        <Route index element={<AllStudentsView />} />
+                        <Route path={'addStudent'} element={<AddStudent />} />
+                    </Route>
+
+                </Route>
+        </Routes>
+      </Router>
+  )
 }
 
 export default App;
