@@ -10,28 +10,30 @@ import Header from "./components/Header";
 function App() {
 
     return (
-        <Router>
-            <TitleProvider>
-                <Header/>
-                <Routes>
-                    <Route path={'/'}>
+        <div id={"main-body"}>
+            <Router>
+                <TitleProvider>
+                    <Header/>
+                    <Routes>
+                        <Route path={'/'}>
 
-                        <Route index element={<Home/>}/>
+                            <Route index element={<Home/>}/>
 
-                        <Route path={'campuses'}>
-                            <Route index element={<AllCampusView/>}/>
-                            <Route path={'addCampus'} element={<AddCampus/>}/>
+                            <Route path={'campuses'}>
+                                <Route index element={<AllCampusView/>}/>
+                                <Route path={'addCampus'} element={<AddCampus/>}/>
+                            </Route>
+
+                            <Route path={'students'}>
+                                <Route index element={<AllStudentsView/>}/>
+                                <Route path={'addStudent'} element={<AddStudent/>}/>
+                            </Route>
+
                         </Route>
-
-                        <Route path={'students'}>
-                            <Route index element={<AllStudentsView/>}/>
-                            <Route path={'addStudent'} element={<AddStudent/>}/>
-                        </Route>
-
-                    </Route>
-                </Routes>
-            </TitleProvider>
-        </Router>
+                    </Routes>
+                </TitleProvider>
+            </Router>
+        </div>
     )
 }
 

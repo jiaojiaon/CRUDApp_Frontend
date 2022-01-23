@@ -13,8 +13,8 @@ function Home() {
     const navigate = useNavigate()
     return (
         <div id={"home-container"}>
-            <button id={"view-all-campus-btn"} onClick={() => navigate('/campuses')}>View All Campuses</button>
-            <button id={"view-all-student-btn"} onClick={() => navigate('/students')}>View All Students</button>
+            <button className={"view-multiple-btn"} onClick={() => navigate('/campuses')}>View All Campuses</button>
+            <button className={"view-multiple-btn"} onClick={() => navigate('/students')}>View All Students</button>
         </div>
     )
 }

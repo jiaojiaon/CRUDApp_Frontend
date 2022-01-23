@@ -7,8 +7,8 @@ function Header() {
     console.log(title)
 
     return (
-        <>
-            <h1>{title}</h1>
+        <div id={"header"}>
+            <h1 id={"title"}>{title}</h1>
             <nav>
                 <ul>
                     <li id={"home-link"}><Link to="/">Home</Link></li>
@@ -16,7 +16,7 @@ function Header() {
                     <li><Link to="/students">Students</Link></li>
                 </ul>
             </nav>
-        </>
+        </div>
     )
 }
 

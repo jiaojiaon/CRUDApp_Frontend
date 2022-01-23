@@ -1,14 +1,111 @@
 body {
   margin: 0;
-  background-color: lightslategrey;
+  background-image: url("./components/images/school-background.jpg");
 }
 
 ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 20px;
 }
 
 li {
   margin: 0 10%;
+}
+
+#header {
+  background-image: url("./components/images/header-background.jpg");
+  text-align: center;
+  border: black 5px solid;
+  border-radius: 2px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  height: 100px;
+  padding: 0;
+}
+
+
+#main-body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#title {
+  margin: 17px 0 0;
+}
+
+#home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-multiple-btn {
+  margin: 20% auto;
+  display: block;
+  border: 2px black solid;
+  background-color: #04AA6D;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.add-titles {
+  text-align: center;
+  font-weight: bold;
+  color: cornsilk;
+}
+
+.adding {
+  border: black 5px solid;
+  border-top: 1px black solid;
+  margin: -1px 0 0;
+  border-radius: 2px;
+  background-image: url("./components/images/standard-background.jpg");
+  height: fit-content;
+  padding: 20px;
+}
+
+label {
+  font-size: larger;
+  display: block;
+  color: chocolate;
+  margin: 30px 0;
+  width: 600px;
+
+}
+
+input {
+  inline-size: 150px;
+  overflow-wrap: break-word;
+  hyphens: manual;
+  margin: 20px 0;
+  float: right;
+  width: 100%;
+}
+
+.add-something-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#description-box {
+  height: 100px;
+  float: right;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.submit-btns-container {
+  text-align: center;
+}
+
+.submit-btns {
+  margin: 15px auto;
+  height: 50px;
+  width: 100px;
+  border: crimson 3px solid;
 }

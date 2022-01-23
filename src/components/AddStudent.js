@@ -34,7 +34,7 @@ function AddStudent(props) {
     return (
         <div className={"adding"} id={"add-students"}>
 
-            <h1>ADD A STUDENT!</h1>
+            <h1 className={"add-titles"}>ADD A STUDENT!</h1>
 
             <div className={"add-something-form-container"} id={"add-student-form-container"}>
 
@@ -50,14 +50,19 @@ function AddStudent(props) {
                                                                                       name={"Email-Address"}
                                                                                       placeholder={"ex: johndoe@gmail.com"}/></label>
 
-                    <button type={"submit"}>Submit</button>
+                    <div className={"submit-btns-container"}>
+
+                        <button className={"submit-btns"} type={"submit"}>Submit</button>
+
+                    </div>
 
                 </form>
 
                 {/* ===== THIS CLOSES THE STUDENT FORM CONTAINER ===== */}
             </div>
 
-            <button className={"leave-add-something-btn"} id={"leave-add-students-btn"} onClick={exitClick}>EXIT</ button>
+            <button className={"leave-add-something-btn"} id={"leave-add-students-btn"} onClick={exitClick}>EXIT
+            </ button>
             {/* ===== THIS CLOSES THE MAIN PARENT CONTAINER ===== */}
         </div>
     )

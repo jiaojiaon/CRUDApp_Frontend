@@ -33,7 +33,7 @@ function AddCampus(props) {
     return (
         <div className={"adding"} id={"add-campus"}>
 
-            <h1>ADD A CAMPUS!</h1>
+            <h1 className={"add-titles"}>ADD A CAMPUS!</h1>
 
             <div className={"add-something-form-container"} id={"add-campus-form-container"}>
 
@@ -45,10 +45,15 @@ function AddCampus(props) {
                     <label htmlFor={"Address"}>Enter The Campus Address: <input type={"text"} name={"Address"}
                                                                                  placeholder={"ex: 2014 Forest Hills Dr, Fayetteville, NC 28303"}/></label>
 
-                    <label htmlFor={"Description"}>Enter The Campus Description: <input type={"text"} name={"Description"}
+                    <label htmlFor={"Description"}>Enter The Campus Description: <textarea id={"description-box"} name={"Description"}
                                                                             placeholder={"ex: Nice and spacious, very clean and quiet."}/></label>
 
-                    <button type={"submit"}>Submit</button>
+                    <div className={"submit-btns-container"}>
+
+                        <button className={"submit-btns"} type={"submit"}>Submit</button>
+
+                    </div>
+
 
                 </form>
 
