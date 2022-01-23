@@ -1,8 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom'
+import {useTitleSetter} from "./context/Title";
 
 //LEADS TO THE ADD CAMPUS SCREEN
 function AddCampus(props) {
+
+    const setTitle = useTitleSetter()
+
+    useEffect(() => {
+        setTitle("Adding Campuses")
+    }, [])
 
     const navigate = useNavigate()
     const [newCampus, setNewCampus] = useState({})

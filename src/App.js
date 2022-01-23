@@ -4,34 +4,35 @@ import AddCampus from "./components/AddCampus";
 import Home from "./components/Home";
 import AllCampusView from "./components/AllCampusView";
 import AllStudentsView from "./components/AllStudentsView";
+import {TitleProvider, useTitle} from "./components/context/Title";
+import Header from "./components/Header";
 
 function App() {
-  return (
-      <Router>
-          <nav>
-              <ul>
-                  <li><Link to="/">Home</Link></li>
-              </ul>
-          </nav>
-        <Routes>
-                <Route path={'/'} >
 
-                    <Route index element={<Home />} />
+    return (
+        <Router>
+            <TitleProvider>
+                <Header/>
+                <Routes>
+                    <Route path={'/'}>
 
-                    <Route path={'campuses'} >
-                        <Route index element={<AllCampusView />} />
-                        <Route path={'addCampus'} element={<AddCampus />} />
+                        <Route index element={<Home/>}/>
+
+                        <Route path={'campuses'}>
+                            <Route index element={<AllCampusView/>}/>
+                            <Route path={'addCampus'} element={<AddCampus/>}/>
+                        </Route>
+
+                        <Route path={'students'}>
+                            <Route index element={<AllStudentsView/>}/>
+                            <Route path={'addStudent'} element={<AddStudent/>}/>
+                        </Route>
+
                     </Route>
-
-                    <Route path={'students'} >
-                        <Route index element={<AllStudentsView />} />
-                        <Route path={'addStudent'} element={<AddStudent />} />
-                    </Route>
-
-                </Route>
-        </Routes>
-      </Router>
-  )
+                </Routes>
+            </TitleProvider>
+        </Router>
+    )
 }
 
 export default App;

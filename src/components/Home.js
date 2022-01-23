@@ -1,7 +1,15 @@
-import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useTitleSetter} from "./context/Title";
 
 function Home() {
+
+    const setTitle = useTitleSetter()
+
+    useEffect(() => {
+        setTitle("Home")
+    }, [])
+
     const navigate = useNavigate()
     return (
         <div id={"home-container"}>
