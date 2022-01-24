@@ -6,6 +6,8 @@ import AllCampusView from "./components/AllCampusView";
 import AllStudentsView from "./components/AllStudentsView";
 import {TitleProvider, useTitle} from "./components/context/Title";
 import Header from "./components/Header";
+import StudentAPIProvider from "./components/context/StudentAPIContext";
+import CampusAPIProvider from "./components/context/CampusAPIContext";
 
 function App() {
 
@@ -14,23 +16,27 @@ function App() {
             <Router>
                 <TitleProvider>
                     <Header/>
-                    <Routes>
-                        <Route path={'/'}>
+                    <StudentAPIProvider>
+                        <CampusAPIProvider>
+                            <Routes>
+                                <Route path={'/'}>
 
-                            <Route index element={<Home/>}/>
+                                    <Route index element={<Home/>}/>
 
-                            <Route path={'campuses'}>
-                                <Route index element={<AllCampusView/>}/>
-                                <Route path={'addCampus'} element={<AddCampus/>}/>
-                            </Route>
+                                    <Route path={'campuses'}>
+                                        <Route index element={<AllCampusView/>}/>
+                                        <Route path={'addCampus'} element={<AddCampus/>}/>
+                                    </Route>
 
-                            <Route path={'students'}>
-                                <Route index element={<AllStudentsView/>}/>
-                                <Route path={'addStudent'} element={<AddStudent/>}/>
-                            </Route>
+                                    <Route path={'students'}>
+                                        <Route index element={<AllStudentsView/>}/>
+                                        <Route path={'addStudent'} element={<AddStudent/>}/>
+                                    </Route>
 
-                        </Route>
-                    </Routes>
+                                </Route>
+                            </Routes>
+                        </CampusAPIProvider>
+                    </StudentAPIProvider>
                 </TitleProvider>
             </Router>
         </div>

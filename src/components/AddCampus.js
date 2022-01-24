@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom'
 import {useTitleSetter} from "./context/Title";
+import {useActionKeyContext, useDispatchContext} from "./context/CampusAPIContext";
 
 //LEADS TO THE ADD CAMPUS SCREEN
-function AddCampus(props) {
+function AddCampus() {
+
+    const ACTIONS = useActionKeyContext()
+    const dispatch = useDispatchContext()
 
     const setTitle = useTitleSetter()
 
@@ -12,7 +16,6 @@ function AddCampus(props) {
     }, [])
 
     const navigate = useNavigate()
-    const [newCampus, setNewCampus] = useState({})
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -20,7 +23,10 @@ function AddCampus(props) {
         campusObj.name = event.target[0].value
         campusObj.address = event.target[1].value
         campusObj.description = event.target[2].value
-        setNewCampus(campusObj)
+        dispatch({type: ACTIONS.ADD_CAMPUS, payload: campusObj})
+        event.target[0].value = ""
+        event.target[1].value = ""
+        event.target[2].value = ""
         //ADD THIS NEW CAMPUS TO THE API
     }
 

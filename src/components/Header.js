@@ -4,7 +4,6 @@ import {useTitle} from "./context/Title";
 function Header() {
 
     const title = useTitle()
-    console.log(title)
 
     return (
         <div id={"header"}>

@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from 'react-router-dom'
 import {useTitleSetter} from "./context/Title";
+import {useDispatchContext, useActionKeyContext} from "./context/StudentAPIContext";
 
 //LEADS TO THE ADD STUDENT SCREEN
-function AddStudent(props) {
+function AddStudent() {
+
+    const ACTIONS = useActionKeyContext()
+    const dispatch = useDispatchContext()
 
     const setTitle = useTitleSetter()
 
@@ -12,7 +16,6 @@ function AddStudent(props) {
     }, [])
 
     const navigate = useNavigate()
-    const [newStudent, setNewStudent] = useState({})
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -21,8 +24,11 @@ function AddStudent(props) {
         studentObj.lastName = event.target[1].value
         studentObj.gpa = event.target[2].value
         studentObj.email = event.target[3].value
-        setNewStudent(studentObj)
-        //ADD THIS NEW STUDENT TO THE API
+        dispatch({type: ACTIONS.ADD_STUDENT, payload: studentObj})
+        event.target[0].value = ""
+        event.target[1].value = ""
+        event.target[2].value = ""
+        event.target[3].value = ""
     }
 
     //EXITS BACK TO HOME
@@ -42,11 +48,11 @@ function AddStudent(props) {
 
                     <label htmlFor={"FirstName"}>Enter Student First Name: <input type={"text"} name={"FirstName"}
                                                                                   placeholder={"ex: John"}/></label>
-                    <label htmlFor={"LastName"}>Enter Student First Name: <input type={"text"} name={"LastName"}
+                    <label htmlFor={"LastName"}>Enter Student Last Name: <input type={"text"} name={"LastName"}
                                                                                  placeholder={"ex: Doe"}/></label>
-                    <label htmlFor={"GPA"}>Enter Student First Name: <input type={"text"} name={"GPA"}
+                    <label htmlFor={"GPA"}>Enter Student GPA: <input type={"text"} name={"GPA"}
                                                                             placeholder={"ex: 3.2"}/></label>
-                    <label htmlFor={"Email-Address"}>Enter Student First Name: <input type={"text"}
+                    <label htmlFor={"Email-Address"}>Enter Student Email: <input type={"text"}
                                                                                       name={"Email-Address"}
                                                                                       placeholder={"ex: johndoe@gmail.com"}/></label>
 
