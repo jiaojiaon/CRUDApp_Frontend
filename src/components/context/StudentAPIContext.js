@@ -27,14 +27,15 @@ const ACTIONS = {
     UPDATE_STUDENT_INFO: 'update'
 }
 
+let change = false;
 
-async function reducer(students, action) {
+function reducer(students, action) {
     switch (action.type) {
         case ACTIONS.INITIALIZE:
             return action.payload
         case ACTIONS.ADD_STUDENT: {
             addStudent(action.payload)
-            return await callUpdatedStudents()
+            change = true;
         }
         case ACTIONS.REMOVE_STUDENT:
             return
@@ -45,43 +46,51 @@ async function reducer(students, action) {
         case ACTIONS.UPDATE_STUDENT_INFO:
             return
     }
+
 }
 
 async function callUpdatedStudents() {
     let response
-    await axios.get('http://localhost:8080/api/students/').then(val => {
+    axios.get('http://localhost:8080/api/students/').then(val => {
         response = val.data
     })
-    return response
+   
 }
 
 async function addStudent(student) {
+    let response
     try {
-        await axios.post('http://localhost:8080/api/students/', student).then(val => {
+        await axios.post('http://localhost:8080/api/students/addStudent', student).then(val => {    
+            response = val.data
         })
     } catch (e) {
         alert("Error adding student")
     }
+
+    return response
 }
 
 function StudentAPIProvider({children}) {
     const [students, dispatch] = useReducer(reducer, [])
 
+    let response
     useEffect(async () => {
         console.log("inside" + students)
+        response = students;
     }, [students])
 
     useEffect(async () => {
+        
         try {
-            let response
             await axios.get('http://localhost:8080/api/students/').then(val => {
                 response = val.data
+                change = false
                 dispatch({type: ACTIONS.INITIALIZE, payload: response})
             })
         } catch (e) {
             alert("Error retrieving students")
         }
-    }, [])
+    }, [change])
 
     return (
         <ActionKeyContext.Provider value={ACTIONS}>
